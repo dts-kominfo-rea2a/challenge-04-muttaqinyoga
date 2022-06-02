@@ -8,7 +8,23 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (times, index = null) => {
+    if(Array.isArray(times)){
+      if(index != null && Number.isInteger(index) && index < times.length){
+        let epochTimeFormat = new Date(times[index]);
+        epochTimeFormatInSecond = Math.floor(epochTimeFormat.getTime() / 1000);
+        return epochTimeFormatInSecond;
+      }
+      let epochTimeFormatInSecondArr = [];
+      for(let i = 0; i<times.length; i++){
+        epochTimeFormatInSecondArr.push(Math.floor(new Date(times[i]).getTime() / 1000));
+        epochTimeFormatInSecondArr.sort();
+      }
+      return epochTimeFormatInSecondArr.join("-");
+    }
+    return "Parameter yang dikirim tidak tepat";
+     
+}
 
 // ! JANGAN DIMODIFIKASI
 (() => {
